@@ -21,7 +21,6 @@ public class Task {
 
     private String name;
     private String content;
-    private Date deadLine;
 
     private Task(){}
 
@@ -43,13 +42,5 @@ public class Task {
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public Date getDeadLine() {
-        return deadLine;
-    }
-
-    public void setDeadLine(Date deadLine) {
-        this.deadLine = deadLine;
     }
 }

@@ -9,8 +9,8 @@ startEndpointApp.service("Task", function ($http) {
             return $http.get(ROOT + '/tasks');
         },
 
-        create : function(movie) {
-            return  $http.post(ROOT + '/insert', movie);
+        create : function(task) {
+            return  $http.post(ROOT + '/insert', task);
         }
     };
 
