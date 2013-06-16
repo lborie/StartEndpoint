@@ -1,0 +1,49 @@
+<section class="hero-unit">
+
+    <header class="page-header">
+        <h1>J'ai {{tasks.length}} taches en cours</h1>
+    </header>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Nom</th>
+            <th>Contenu</th>
+            <th>Deadline</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="task in tasks">
+            <td>{{task.id}}</td>
+            <td>{{task.name}}</td>
+            <td>{{task.content}}</td>
+            <td>{{task.deadline}}</td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+
+<section class="modal-body">
+    <alert-message show="showAlert" title="{{errorTitle}}" message="{{errorMessage}}"></alert-message>
+    <form name="taskForm" class="form-horizontal">
+        <div class="control-group" ng-class="{error : taskForm.inputTitle.$error.required}">
+            <label class="control-label">Titre :</label>
+            <input type="text" name="inputTitle" ng-model="task.name" autofocus required>
+            <span class="help-block" ng-show="taskForm.inputTitle.$error.required">Le titre est obligatoire</span>
+        </div>
+        <div class="control-group" ng-class="{error : taskForm.inputYear.$error.pattern}">
+            <label class="control-label">Deadline :</label>
+            <input type="text" name="deadline" ng-model="task.deadline" ng-pattern="/(19|20)\d\d/">
+            <span class="help-block" ng-show="taskForm.inputYear.$error.pattern">L'année n'est pas valide</span>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Contenu : </label>
+            <input type="text" ng-model="task.content">
+        </div>
+    </form>
+</section>
+<footer class="modal-footer">
+    <button class="btn btn-danger btn-small" ng-click="dismiss();">Annuler</button>
+    <button class="btn btn-success" ng-click="addTask(task)" ng-disabled="taskForm.$invalid">Ajouter</button>
+</footer>

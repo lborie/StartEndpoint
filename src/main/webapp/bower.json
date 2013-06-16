@@ -1,0 +1,13 @@
+{
+  "name": "startendpoints",
+  "version": "1.0-SNAPSHOT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ],
+  "dependencies": {
+    "angular": "~1.0.7",
+    "angular-bootstrap": "~0.3.0"
+  }
+}
