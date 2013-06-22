@@ -7,9 +7,29 @@ startEndpointApp.controller("homeController" ,function ($scope) {
 });
 
 startEndpointApp.controller("taskController" ,function ($scope, Task) {
+    $scope.s = "";
+
     Task.fetch().success(function(resp){
         $scope.tasks = resp.items;
+        $scope.s = ($scope.tasks.length > 1)? "s" : "";
     });
+});
+
+
+startEndpointApp.controller("modalTaskController" ,function ($scope, Task) {
+    $scope.open = function () {
+        $scope.modalTask = true;
+    };
+
+    $scope.close = function () {
+        $scope.closeMsg = 'I was closed at: ' + new Date();
+        $scope.modalTask = false;
+    };
+
+    $scope.opts = {
+        backdropFade: true,
+        dialogFade:true
+    };
 
     $scope.addTask = function(task){
         Task.create(task)
@@ -27,5 +47,7 @@ startEndpointApp.controller("taskController" ,function ($scope, Task) {
                 $scope.errorMessage = resp.error;
                 $scope.showAlert = true;
             });
+        $scope.modalTask = false;
     };
+
 });

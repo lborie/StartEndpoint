@@ -1,6 +1,6 @@
 "use strict";
 
-var startEndpointApp = angular.module('startEndpointApp', []);
+var startEndpointApp = angular.module('startEndpointApp', ['ui.bootstrap']);
 
 startEndpointApp.config(function($routeProvider) {
     $routeProvider

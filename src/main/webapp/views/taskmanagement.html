@@ -1,8 +1,34 @@
 <section class="hero-unit">
 
     <header class="page-header">
-        <h1>J'ai {{tasks.length}} taches en cours</h1>
+        <h1>J'ai {{tasks.length}} tache{{s}} en cours</h1>
     </header>
+
+    <div ng-controller="modalTaskController">
+        <button class="btn" ng-click="open()">Nouvelle tâche !</button>
+        <div modal="modalTask" close="close()" options="opts">
+            <div class="modal-header">
+                <h4>Création d'une nouvelle tâche</h4>
+            </div>
+            <div class="modal-body">
+                <form name="taskForm" class="form-horizontal">
+                    <div class="control-group" ng-class="{error : taskForm.inputTitle.$error.required}">
+                        <label class="control-label">Titre :</label>
+                        <input type="text" name="inputTitle" ng-model="task.name" autofocus required>
+                        <span class="help-block" ng-show="taskForm.inputTitle.$error.required">Le titre est obligatoire</span>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Contenu : </label>
+                        <input type="text" ng-model="task.content">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-warning cancel" ng-click="close()">Annuler</button>
+                <button class="btn btn-success" ng-click="addTask(task)" ng-disabled="taskForm.$invalid">Ajouter</button>
+            </div>
+        </div>
+    </div>
 
     <table class="table table-striped">
         <thead>
@@ -22,20 +48,3 @@
     </table>
 </section>
 
-<section class="modal-body">
-    <alert-message show="showAlert" title="{{errorTitle}}" message="{{errorMessage}}"></alert-message>
-    <form name="taskForm" class="form-horizontal">
-        <div class="control-group" ng-class="{error : taskForm.inputTitle.$error.required}">
-            <label class="control-label">Titre :</label>
-            <input type="text" name="inputTitle" ng-model="task.name" autofocus required>
-            <span class="help-block" ng-show="taskForm.inputTitle.$error.required">Le titre est obligatoire</span>
-        </div>
-        <div class="control-group">
-            <label class="control-label">Contenu : </label>
-            <input type="text" ng-model="task.content">
-        </div>
-    </form>
-</section>
-<footer class="modal-footer">
-    <button class="btn btn-success" ng-click="addTask(task)" ng-disabled="taskForm.$invalid">Ajouter</button>
-</footer>
