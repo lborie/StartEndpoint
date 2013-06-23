@@ -32,18 +32,20 @@
 
     <table class="table table-striped">
         <thead>
-        <tr>
-            <th>#</th>
-            <th>Nom</th>
-            <th>Contenu</th>
-        </tr>
+            <tr>
+                <th>#</th>
+                <th>Nom</th>
+                <th>Contenu</th>
+                <th></th>
+            </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="task in tasks">
-            <td>{{task.id}}</td>
-            <td>{{task.name}}</td>
-            <td>{{task.content}}</td>
-        </tr>
+            <tr ng-repeat="task in tasks">
+                <td>{{task.id}}</td>
+                <td>{{task.name}}</td>
+                <td>{{task.content}}</td>
+                <td><button class="btn btn-warning" ng-click="deleteTask($index)">Supprimer</button></td>
+            </tr>
         </tbody>
     </table>
 </section>

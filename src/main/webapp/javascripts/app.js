@@ -2,6 +2,9 @@
 
 var startEndpointApp = angular.module('startEndpointApp', ['ui.bootstrap']);
 
+/**
+ * Router
+ */
 startEndpointApp.config(function($routeProvider) {
     $routeProvider
         .when('/home', {

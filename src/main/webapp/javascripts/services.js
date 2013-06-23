@@ -1,5 +1,8 @@
 "use strict";
 
+/**
+ * Task service to interact with the Task API
+ */
 startEndpointApp.service("Task", function ($http) {
     var ROOT = 'http://localhost:8000/_ah/api/task/v1';
 
@@ -11,6 +14,10 @@ startEndpointApp.service("Task", function ($http) {
 
         create : function(task) {
             return  $http.post(ROOT + '/insert', task);
+        },
+
+        delete : function(id) {
+          return $http.delete(ROOT + '/delete/' + id);
         }
     };
 

@@ -7,11 +7,8 @@ import com.googlecode.objectify.annotation.Id;
 import java.util.Date;
 
 /**
- * Created with IntelliJ IDEA.
- * User: kanithael
- * Date: 16/06/13
- * Time: 10:19
- * To change this template use File | Settings | File Templates.
+ * Task Entity.
+ * Just a name and a content
  */
 @Entity
 @Cache
@@ -26,6 +23,14 @@ public class Task {
 
     public Task(String name){
         this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -43,4 +48,6 @@ public class Task {
     public void setContent(String content) {
         this.content = content;
     }
+
+
 }

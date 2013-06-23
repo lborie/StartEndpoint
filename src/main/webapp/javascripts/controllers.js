@@ -1,11 +1,17 @@
 "use strict";
 
+/**
+ * Controller of the home page
+ */
 startEndpointApp.controller("homeController" ,function ($scope) {
 
     $scope.project = 'Start Endpoints';
 
 });
 
+/**
+ * Controller of the Task management page
+ */
 startEndpointApp.controller("taskController" ,function ($scope, Task) {
     $scope.s = "";
 
@@ -13,9 +19,25 @@ startEndpointApp.controller("taskController" ,function ($scope, Task) {
         $scope.tasks = resp.items;
         $scope.s = ($scope.tasks.length > 1)? "s" : "";
     });
+
+    $scope.deleteTask = function(index) {
+        var deleteTask = confirm('Are you sure ?');
+
+        if (deleteTask) {
+            Task.delete($scope.tasks[index].id)
+                .success(function(){
+                    $scope.tasks.splice(index, 1);
+                });
+        }
+
+
+
+    }
 });
 
-
+/**
+ * Sub Controller for the tasks management (modal window)
+ */
 startEndpointApp.controller("modalTaskController" ,function ($scope, Task) {
     $scope.open = function () {
         $scope.modalTask = true;
@@ -33,19 +55,11 @@ startEndpointApp.controller("modalTaskController" ,function ($scope, Task) {
 
     $scope.addTask = function(task){
         Task.create(task)
-            .success(function(){
-                var newTask = {};
-                angular.copy(task, newTask);
-                $scope.tasks.push(newTask);
+            .success(function(myNewTask){
+                $scope.tasks.push(myNewTask);
                 $scope.task = {};
                 $scope.showAlert = false;
                 $scope.dismiss();
-            })
-            .error(function(resp, statusCode){
-                // Affichage d'un message d'erreur
-                $scope.errorTitle = 'Erreur ' + statusCode ;
-                $scope.errorMessage = resp.error;
-                $scope.showAlert = true;
             });
         $scope.modalTask = false;
     };

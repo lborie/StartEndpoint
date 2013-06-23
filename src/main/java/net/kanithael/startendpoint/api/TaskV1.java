@@ -6,6 +6,7 @@ import com.google.api.server.spi.config.ApiMethod.HttpMethod;
 import net.kanithael.startendpoint.dao.GenericDao;
 import net.kanithael.startendpoint.model.Task;
 
+import javax.inject.Named;
 import java.util.List;
 
 /**
@@ -25,7 +26,7 @@ public class TaskV1 {
             httpMethod = HttpMethod.GET
     )
     public List<Task> listTasks(){
-        return taskDao.getTasks();
+        return taskDao.getEntities();
     }
 
     @ApiMethod(
@@ -33,7 +34,17 @@ public class TaskV1 {
             path = "insert",
             httpMethod = HttpMethod.POST
     )
-    public void insertTask(Task task){
-        taskDao.insertTask(task);
+    public Task insertTask(Task task){
+        taskDao.insertEntity(task);
+        return task;
+    }
+
+    @ApiMethod(
+            name = "task.delete",
+            path = "delete/{id}",
+            httpMethod = HttpMethod.DELETE
+    )
+    public void deleteTask(@Named("id") String id){
+        taskDao.deleteEntity(Long.valueOf(id));
     }
 }
