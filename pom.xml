@@ -134,6 +134,7 @@
                 </executions>
             </plugin>
         </plugins>
+        <finalName>startendpoint-webapp</finalName>
     </build>
 
 </project>
