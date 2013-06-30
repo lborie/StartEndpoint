@@ -10,8 +10,7 @@ basePath = '';
 files = [
   JASMINE,
   JASMINE_ADAPTER,
-  REQUIRE,
-  REQUIRE_ADAPTER,
+
   'javascripts/lib/angular/angular.js',
   'javascripts/lib/angular-bootstrap/ui-bootstrap.min.js',
   'javascripts/lib/angular-bootstrap/ui-bootstrap-tpls.min.js',

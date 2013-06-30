@@ -9,6 +9,7 @@ pom.xml.versionsBackup
 test-output/
 /atlassian-ide-plugin.xml
 /src/main/webapp/javascripts/lib
+/src/main/webapp/node_modules
 .idea
 .DS_Store
 .classpath
