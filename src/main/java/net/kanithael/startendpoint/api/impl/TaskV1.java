@@ -1,24 +1,23 @@
-package net.kanithael.startendpoint.api;
+package net.kanithael.startendpoint.api.impl;
 
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiMethod.HttpMethod;
+import net.kanithael.startendpoint.api.TaskAPI;
 import net.kanithael.startendpoint.dao.GenericDao;
 import net.kanithael.startendpoint.model.Task;
 
 import javax.inject.Named;
 import java.util.List;
 
-/**
- * Api to manage a Task list
- */
 @Api(
         name = "task",
         version = "v1"
 )
-public class TaskV1 {
+public class TaskV1 implements TaskAPI {
 
     private static final GenericDao<Task> taskDao = new GenericDao<Task>(Task.class);
+
 
     @ApiMethod(
             name = "task.list",
