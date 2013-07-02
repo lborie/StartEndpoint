@@ -9,6 +9,7 @@ import net.kanithael.startendpoint.model.Task;
 
 import javax.inject.Named;
 import java.util.List;
+import java.util.logging.Logger;
 
 @Api(
         name = "task",
@@ -17,7 +18,6 @@ import java.util.List;
 public class TaskV1 implements TaskAPI {
 
     private static final GenericDao<Task> taskDao = new GenericDao<Task>(Task.class);
-
 
     @ApiMethod(
             name = "task.list",

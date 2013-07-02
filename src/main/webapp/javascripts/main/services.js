@@ -4,7 +4,7 @@
  * Task service to interact with the Task API
  */
 startEndpointApp.service("Task", function ($http) {
-    var ROOT = 'https://startendpoint.appspot.com/_ah/api/task/v1';
+    var ROOT = '/_ah/api/task/v1';
 
     return {
 
