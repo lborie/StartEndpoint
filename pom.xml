@@ -9,7 +9,7 @@
     <artifactId>startendpoint</artifactId>
 
     <properties>
-        <appengine.app.version>1</appengine.app.version>
+        <appengine.app.version>${project.version}</appengine.app.version>
         <appengine.target.version>1.8.1</appengine.target.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -146,7 +146,7 @@
                         </goals>
                         <configuration>
                             <source>
-                                <!-- version pattern : 1.0.2-snapshot-abcde -->
+                                <!-- version pattern : 1.0.2-snapshot -->
                                 project.properties["application.appengine.version"] =
                                 project.version.replace(".","-").toLowerCase()
                             </source>
