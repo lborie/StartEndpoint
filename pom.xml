@@ -147,7 +147,7 @@
                         <configuration>
                             <source>
                                 <!-- version pattern : 1.0.2-snapshot -->
-                                project.properties["application.appengine.version"] =
+                                project.properties["appengine.app.version"] =
                                 project.version.replace(".","-").toLowerCase()
                             </source>
                         </configuration>
